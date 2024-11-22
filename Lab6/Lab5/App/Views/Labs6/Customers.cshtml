@@ -1,0 +1,32 @@
+@model IEnumerable<App.Models.CustomerViewModel>
+
+<h2>Customers</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>Postcode</th>
+            <th>Date of Birth</th>
+            <th>Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var customer in Model)
+        {
+            <tr>
+                <td>@customer.MdmCustomerId</td>
+                <td>@customer.AddressLine1</td>
+                <td>@customer.CityTown</td>
+                <td>@customer.Postcode</td>
+                <td>@customer.MdmDateOfBirth.ToShortDateString()</td>
+                <td>
+                    <a href="@Url.Action("CustomerDetail", "Labs6", new { id = customer.MdmCustomerId })">
+                        View Details
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

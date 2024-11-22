@@ -6,5 +6,4 @@ public class Customer_System
     public string SystemName { get; set; }
 
     public ICollection<MDM_Customer_Index> MdmCustomerIndexes { get; set; }
-    
 }
