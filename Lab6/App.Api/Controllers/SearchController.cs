@@ -18,9 +18,9 @@ namespace App.Api.Controllers
         [HttpGet("api/search")]
         public async Task<IActionResult> Search(
             [FromQuery] DateTime? date,
-            [FromQuery] List<int> serviceIds,
-            [FromQuery] string addressStartsWith,
-            [FromQuery] string addressEndsWith)
+            [FromQuery] List<int>? serviceIds,
+            [FromQuery] string? addressStartsWith,
+            [FromQuery] string? addressEndsWith)
         {
             var query = _context.MdmCustomerServices.AsQueryable();
 

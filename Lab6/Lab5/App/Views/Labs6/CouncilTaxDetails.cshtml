@@ -1,0 +1,32 @@
+@model App.Models.CouncilTaxViewModel
+
+<h1>Council Tax Details</h1>
+
+<table class="table table-bordered">
+    <tr>
+        <th>ID:</th>
+        <td>@Model.CtResidentId</td>
+    </tr>
+    <tr>
+        <th>Address:</th>
+        <td>
+            @Model.CtAddressLine1<br />
+            @Model.CtAddressLine2<br />
+            @Model.CtAddressLine3
+        </td>
+    </tr>
+    <tr>
+        <th>City:</th>
+        <td>@Model.CtCityTown</td>
+    </tr>
+    <tr>
+        <th>Postal Code:</th>
+        <td>@Model.CtPostcode</td>
+    </tr>
+    <tr>
+        <th>Details:</th>
+        <td>@Model.CtOtherDetails</td>
+    </tr>
+</table>
+
+<a href="@Url.Action("CouncilTax", "Labs6")" class="btn btn-primary">Back to Council Taxes</a>

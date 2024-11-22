@@ -17,7 +17,7 @@ public class ApiClient
         response.EnsureSuccessStatusCode();
         return await response.Content.ReadFromJsonAsync<List<IsoCountryCodeViewModel>>();
     }
-    // New method to get all customers
+
     public async Task<List<CustomerViewModel>> GetCustomersAsync()
     {
         var response = await _httpClient.GetAsync("/api/customers");
@@ -49,4 +49,18 @@ public class ApiClient
         response.EnsureSuccessStatusCode();
         return await response.Content.ReadFromJsonAsync<List<SearchResultViewModel>>();
     }
+    public async Task<List<CouncilTaxViewModel>> GetCouncilTaxesAsync()
+    {
+        var response = await _httpClient.GetAsync("/api/council-taxes");
+        response.EnsureSuccessStatusCode();
+        return await response.Content.ReadFromJsonAsync<List<CouncilTaxViewModel>>();
+    }
+
+    public async Task<CouncilTaxViewModel> GetCouncilTaxByIdAsync(int id)
+    {
+        var response = await _httpClient.GetAsync($"/api/council-taxes/{id}");
+        response.EnsureSuccessStatusCode();
+        return await response.Content.ReadFromJsonAsync<CouncilTaxViewModel>();
+    }
+
 }

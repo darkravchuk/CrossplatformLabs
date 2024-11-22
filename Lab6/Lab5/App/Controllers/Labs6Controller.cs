@@ -27,7 +27,6 @@ public class Labs6Controller : Controller
         }
     }
     
-    // Customers List View
     [HttpGet]
     public async Task<IActionResult> Customers()
     {
@@ -43,8 +42,7 @@ public class Labs6Controller : Controller
         }
     }
 
-    // Customer Detail View
-    [HttpGet("{id}")]
+    [HttpGet("customers/{id}")]
     public async Task<IActionResult> CustomerDetail(int id)
     {
         try
@@ -72,6 +70,36 @@ public class Labs6Controller : Controller
         {
             var results = await _apiClient.SearchAsync(date, serviceIds, addressStartsWith, addressEndsWith);
             return View("SearchResults", results);
+        }
+        catch (Exception ex)
+        {
+            ModelState.AddModelError(string.Empty, $"Error: {ex.Message}");
+            return View("Error");
+        }
+    }
+    
+    [HttpGet]
+    public async Task<IActionResult> CouncilTax()
+    {
+        try
+        {
+            var councilTaxes = await _apiClient.GetCouncilTaxesAsync();
+            return View("CouncilTax", councilTaxes);
+        }
+        catch (Exception ex)
+        {
+            ModelState.AddModelError(string.Empty, $"Error: {ex.Message}");
+            return View("Error");
+        }
+    }
+
+    [HttpGet("council-tax/{id}")]
+    public async Task<IActionResult> CouncilTaxDetails(int id)
+    {
+        try
+        {
+            var councilTax = await _apiClient.GetCouncilTaxByIdAsync(id);
+            return View("CouncilTaxDetails", councilTax);
         }
         catch (Exception ex)
         {
