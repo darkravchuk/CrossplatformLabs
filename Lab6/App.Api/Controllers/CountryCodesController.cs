@@ -1,4 +1,5 @@
 using Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Models;
@@ -6,6 +7,7 @@ using Models;
 namespace App.Api.Controllers;
 
 [ApiController]
+[Authorize]
 public class CountryCodesController : Controller
 {
     private readonly ApplicationDbContext _context;
@@ -15,7 +17,6 @@ public class CountryCodesController : Controller
         _context = context;
     }
 
-    // List view
     [HttpGet("api/iso-country-codes")]
     public async Task<IActionResult> Index()
     {
@@ -30,7 +31,6 @@ public class CountryCodesController : Controller
         return Ok(countries);
     }
 
-    // Detail view
     [HttpGet("api/details")]
     public async Task<IActionResult> Details(string id)
     {

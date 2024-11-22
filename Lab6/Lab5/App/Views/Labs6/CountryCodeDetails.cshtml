@@ -1,0 +1,20 @@
+@model App.Models.IsoCountryCodeViewModel
+
+@{
+    ViewData["Title"] = "Country Code Details";
+}
+
+<h1>Country Code Details</h1>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Country Code:</th>
+        <td>@Model.CountryCode</td>
+    </tr>
+    <tr>
+        <th>Country Name:</th>
+        <td>@Model.CountryName</td>
+    </tr>
+</table>
+
+<a href="@Url.Action("CountryCodes", "Labs6")" class="btn btn-primary">Back to Country Codes</a>

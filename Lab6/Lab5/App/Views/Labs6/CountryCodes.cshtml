@@ -13,6 +13,7 @@
             <tr>
                 <th>Country Code</th>
                 <th>Country Name</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -21,6 +22,11 @@
                 <tr>
                     <td>@country.CountryCode</td>
                     <td>@country.CountryName</td>
+                    <td>
+                        <a href="@Url.Action("CountryCodeDetails", "Labs6", new { id = country.CountryCode })" class="btn btn-info">
+                            View Details
+                        </a>
+                    </td>
                 </tr>
             }
         </tbody>

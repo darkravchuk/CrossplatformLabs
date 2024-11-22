@@ -18,6 +18,13 @@ public class ApiClient
         return await response.Content.ReadFromJsonAsync<List<IsoCountryCodeViewModel>>();
     }
 
+    public async Task<IsoCountryCodeViewModel> GetCountryCodeByIdAsync(string id)
+    {
+        var response = await _httpClient.GetAsync($"/api/details?id={id}");
+        response.EnsureSuccessStatusCode();
+        return await response.Content.ReadFromJsonAsync<IsoCountryCodeViewModel>();
+    }
+    
     public async Task<List<CustomerViewModel>> GetCustomersAsync()
     {
         var response = await _httpClient.GetAsync("/api/customers");

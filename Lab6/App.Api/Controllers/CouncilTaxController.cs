@@ -1,9 +1,12 @@
 using Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace App.Api.Controllers;
 
+[ApiController]
+[Authorize]
 public class CouncilTaxController : Controller
 {
     private readonly ApplicationDbContext _context;

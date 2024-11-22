@@ -1,8 +1,10 @@
 using App.Clients;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace App.Controllers;
 
+[Authorize]
 public class Labs6Controller : Controller
 {
     private readonly ApiClient _apiClient;
@@ -26,6 +28,22 @@ public class Labs6Controller : Controller
             return View("Error");
         }
     }
+    
+    [HttpGet("country-codes/{id}")]
+    public async Task<IActionResult> CountryCodeDetails(string id)
+    {
+        try
+        {
+            var country = await _apiClient.GetCountryCodeByIdAsync(id);
+            return View("CountryCodeDetails", country);
+        }
+        catch (Exception ex)
+        {
+            ModelState.AddModelError(string.Empty, $"Error: {ex.Message}");
+            return View("Error");
+        }
+    }
+
     
     [HttpGet]
     public async Task<IActionResult> Customers()
