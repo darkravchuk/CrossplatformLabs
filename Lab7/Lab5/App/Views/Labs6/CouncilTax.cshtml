@@ -1,0 +1,35 @@
+@model IEnumerable<App.Models.CouncilTaxViewModel>
+
+<h1>Council Tax List</h1>
+
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Address</th>
+        <th>City</th>
+        <th>Postal Code</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var tax in Model)
+    {
+        <tr>
+            <td>@tax.CtResidentId</td>
+            <td>
+                @tax.CtAddressLine1<br />
+                @tax.CtAddressLine2<br />
+                @tax.CtAddressLine3
+            </td>
+            <td>@tax.CtCityTown</td>
+            <td>@tax.CtPostcode</td>
+            <td>
+                <a href="@Url.Action("CouncilTaxDetails", "Labs6", new { id = tax.CtResidentId })">
+                    View Details
+                </a>                
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

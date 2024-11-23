@@ -1,0 +1,23 @@
+@model dynamic
+
+<h2>Search Services</h2>
+
+<form method="post" asp-action="Search" asp-controller="Labs6">
+    <div>
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" />
+    </div>
+    <div>
+        <label for="serviceIds">Service IDs (comma-separated):</label>
+        <input type="text" id="serviceIds" name="serviceIds" placeholder="e.g., 1,2,3" />
+    </div>
+    <div>
+        <label for="addressStartsWith">Address Starts With:</label>
+        <input type="text" id="addressStartsWith" name="addressStartsWith" />
+    </div>
+    <div>
+        <label for="addressEndsWith">Address Ends With:</label>
+        <input type="text" id="addressEndsWith" name="addressEndsWith" />
+    </div>
+    <button type="submit">Search</button>
+</form>

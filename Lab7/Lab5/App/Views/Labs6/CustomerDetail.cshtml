@@ -1,0 +1,12 @@
+@model App.Models.CustomerViewModel
+
+<h2>Customer Details</h2>
+<div>
+    <p><strong>ID:</strong> @Model.MdmCustomerId</p>
+    <p><strong>Address:</strong> @Model.AddressLine1</p>
+    <p><strong>City:</strong> @Model.CityTown</p>
+    <p><strong>Postcode:</strong> @Model.Postcode</p>
+    <p><strong>Date of Birth:</strong> @Model.MdmDateOfBirth.ToShortDateString()</p>
+    <p><strong>Other Details:</strong> @Model.OtherDetails</p>
+</div>
+<a href="@Url.Action("Customers", "Labs6")" class="btn btn-primary">Back to Customers</a>

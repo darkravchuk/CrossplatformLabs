@@ -1,0 +1,38 @@
+@model IEnumerable<App.Models.IsoCountryCodeViewModel>
+
+@{
+    ViewData["Title"] = "Country Codes";
+}
+
+<h1>Country Codes</h1>
+
+@if (Model != null && Model.Any())
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Country Code</th>
+                <th>Country Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var country in Model)
+            {
+                <tr>
+                    <td>@country.CountryCode</td>
+                    <td>@country.CountryName</td>
+                    <td>
+                        <a href="@Url.Action("CountryCodeDetails", "Labs6", new { id = country.CountryCode })" class="btn btn-info">
+                            View Details
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No country codes available.</p>
+}

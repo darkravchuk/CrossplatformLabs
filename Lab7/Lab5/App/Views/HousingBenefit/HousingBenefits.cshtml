@@ -1,0 +1,36 @@
+@model IEnumerable<App.Models.HousingBenefitViewModel>
+
+<h1>Housing Benefits</h1>
+
+<a href="@Url.Action("CreateHousingBenefit", "HousingBenefit")" class="btn btn-primary">Add New Housing Benefit</a>
+
+<table class="table table-bordered mt-3">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Address</th>
+            <th>Postcode</th>
+            <th>Other Details</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var benefit in Model)
+        {
+            <tr>
+                <td>@benefit.HbRecipientId</td>
+                <td>@benefit.HbAddress</td>
+                <td>@benefit.HbPostcode</td>
+                <td>@benefit.HbOtherDetails</td>
+                <td>
+                    <a href="@Url.Action("HousingBenefitDetails", "HousingBenefit", new { id = benefit.HbRecipientId })" class="btn btn-info">View details V1, V2</a>
+                    <a href="@Url.Action("HousingBenefitDetailsV2", "HousingBenefit", new { id = benefit.HbRecipientId, version = "2.0" })" class="btn btn-info">View details V2</a>
+                    <a href="@Url.Action("EditHousingBenefit", "HousingBenefit", new { id = benefit.HbRecipientId })" class="btn btn-warning">Edit</a>
+                    <form method="post" asp-action="DeleteHousingBenefit" asp-controller="HousingBenefit" asp-route-id="@benefit.HbRecipientId" class="d-inline">
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this item?')">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

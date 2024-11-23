@@ -1,0 +1,20 @@
+@model App.Models.HousingBenefitViewModel
+
+<h1>Create Housing Benefit</h1>
+
+<form method="post" asp-action="CreateHousingBenefit" asp-controller="HousingBenefit">
+    <div class="mb-3">
+        <label for="HbAddress" class="form-label">Address</label>
+        <input type="text" class="form-control" id="HbAddress" name="HbAddress" value="@Model?.HbAddress" required />
+    </div>
+    <div class="mb-3">
+        <label for="HbPostcode" class="form-label">Postcode</label>
+        <input type="text" class="form-control" id="HbPostcode" name="HbPostcode" value="@Model?.HbPostcode" required />
+    </div>
+    <div class="mb-3">
+        <label for="HbOtherDetails" class="form-label">Other Details</label>
+        <textarea class="form-control" id="HbOtherDetails" name="HbOtherDetails">@Model?.HbOtherDetails</textarea>
+    </div>
+    <button type="submit" class="btn btn-success">Create</button>
+    <a href="@Url.Action("HousingBenefits", "HousingBenefit")" class="btn btn-secondary">Cancel</a>
+</form>
