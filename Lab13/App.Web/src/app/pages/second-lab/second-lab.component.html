@@ -1,0 +1,81 @@
+<div style="margin-bottom: 20px">
+    <h2 style="font-weight: bold">Варіант 23</h2>
+
+    <div>
+        <p>
+            У вас є необмежену кількість монет <b>N</b> різних переваг. Визначити, чи можна з їх допомогою розміняти задані суми грошей.
+        </p>
+        <p>
+            У першому рядку вхідного файлу <b>INPUT.TXT</b> задано число <b>N</b>, далі у другому рядку записані <b>N</b> чисел, що задають переваги монеток.
+            У третьому рядку задано число <b>K</b> – кількість сум. У четвертому рядку розташовуються <b>K</b> чисел, що визначають розміри сум.
+            Усі числа у вхідному файлі натуральні і не перевищують 1000.
+        </p>
+        <p>
+            У вихідний файл <b>OUTPUT.TXT</b> виведіть до чисел через пробіл: для кожної суми слід вивести 0, якщо її не можна розміняти, і 1, якщо можна.
+        </p>
+        <b>Приклад:</b>
+        <div style="margin-top: 10px; padding: 10px; background-color: #f9f9f9; border: 1px solid #ddd; border-radius: 5px">
+            <table style="width: 100%; border-collapse: collapse">
+                <thead>
+                <tr>
+                    <th style="text-align: left; border-bottom: 2px solid #333">№</th>
+                    <th style="text-align: left; border-bottom: 2px solid #333">INPUT.TXT</th>
+                    <th style="text-align: left; border-bottom: 2px solid #333">OUTPUT.TXT</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td style="border-bottom: 1px solid #ddd; padding: 5px">1</td>
+                    <td style="border-bottom: 1px solid #ddd; padding: 5px">2<br />3 5<br />5<br />3 6 7 11 12</td>
+                    <td style="border-bottom: 1px solid #ddd; padding: 5px">1 1 0 1 1</td>
+                </tr>
+                <tr>
+                    <td style="border-bottom: 1px solid #ddd; padding: 5px">2</td>
+                    <td style="border-bottom: 1px solid #ddd; padding: 5px">1<br />10<br />1<br />3</td>
+                    <td style="border-bottom: 1px solid #ddd; padding: 5px">0</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <form
+            (ngSubmit)="onSubmit()"
+            style="
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 100%;
+      max-width: 500px;
+    "
+    >
+        <label for="inputText" style="font-weight: bold">Введіть вхідні дані:</label>
+        <textarea
+                id="inputText"
+                [(ngModel)]="inputText"
+                name="inputText"
+                rows="6"
+                style="padding: 10px; font-family: Arial, sans-serif; resize: vertical"
+        ></textarea>
+        <button
+                type="submit"
+                style="padding: 10px; font-size: 16px; font-weight: bold; cursor: pointer"
+        >
+            Виконати
+        </button>
+    </form>
+
+    <div *ngIf="outputResult !== null" style="margin-top: 20px">
+        <h3 style="font-weight: bold">Результат:</h3>
+        <div
+                style="
+        width: 100%;
+        max-width: 500px;
+        padding: 10px;
+        font-family: Arial, sans-serif;
+      "
+        >
+            {{ outputResult }}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,93 @@
+<div style="margin-bottom: 20px">
+    <h2>Варіант 23</h2>
+
+    <div>
+        У результаті чергової хитромудрої комбінації у Остапа Бендера та його
+        компаньйонів – К дітей лейтенанта Шмідта виявилося X рублів п'ятирублевими
+        банкнотами. І ось справа, як водиться, дійшла до розподілу...
+        <br />
+        <br />
+        Шура Балаганов запропонував "справедливість", тобто. всім порівну.
+        Паніковський вирішив собі виділити половину, а решті "за заслугами". Кожен
+        з К дітей лейтенанта запропонував щось цікаве. Проте, у Великого
+        Комбінатора була своя думка щодо цього...
+        <br /><br />
+        Ваше ж завдання полягає у знаходженні кількості способів розділити наявні
+        гроші між усіма учасниками цих славних подій: К дітям лейтенанта Шмідта та
+        Остапом Бендером.
+        <br />
+        <br />
+        <b>Вхідні дані</b><br />
+        У вхідному файлі INPUT.TXT записані цілі числа X (0 ≤ X ≤ 500) та K
+        (0 ≤ K ≤ 100). Природно, що число X ділиться на 5. Та й при розподілі рвати
+        п'ятирублеві банкноти не дозволяється.
+        <br />
+        <br />
+        <b>Вихідні дані</b><br />
+        У вихідний файл OUTPUT.TXT виведіть одне ціле число - кількість способів
+        розподілу.
+        <br />
+        <br />
+        <b>Приклад</b><br />
+        <table style="border-collapse: collapse; width: 100%">
+            <tr>
+                <th
+                        style="border: 1px solid black; padding: 5px; text-align: left; width: 50%"
+                >
+                    INPUT.TXT
+                </th>
+                <th
+                        style="border: 1px solid black; padding: 5px; text-align: left; width: 50%"
+                >
+                    OUTPUT.TXT
+                </th>
+            </tr>
+            <tr>
+                <td style="border: 1px solid black; padding: 5px">15 2</td>
+                <td style="border: 1px solid black; padding: 5px">10</td>
+            </tr>
+        </table>
+    </div>
+
+    <form
+            (ngSubmit)="onSubmit()"
+            style="
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 100%;
+      max-width: 500px;
+    "
+    >
+        <label for="inputText" style="font-weight: bold"
+        >Введіть вхідні дані:</label
+        >
+        <textarea
+                id="inputText"
+                [(ngModel)]="inputText"
+                name="inputText"
+                rows="6"
+                style="padding: 10px; font-family: Arial, sans-serif; resize: vertical"
+        ></textarea>
+        <button
+                type="submit"
+                style="padding: 10px; font-size: 16px; font-weight: bold; cursor: pointer"
+        >
+            Виконати
+        </button>
+    </form>
+
+    <div *ngIf="outputResult !== null" style="margin-top: 20px">
+        <h3 style="font-weight: bold">Результат:</h3>
+        <div
+                style="
+        width: 100%;
+        max-width: 500px;
+        padding: 10px;
+        font-family: Arial, sans-serif;
+      "
+        >
+            {{ outputResult }}
+        </div>
+    </div>
+</div>

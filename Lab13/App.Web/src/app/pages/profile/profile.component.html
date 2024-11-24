@@ -1,0 +1,18 @@
+<div class="container mt-5" *ngIf="auth.user$ | async as user">
+    <div
+            class="row align-items-center profile-header mb-5 text-center text-md-left bg-light p-4 rounded shadow-sm"
+    >
+        <div class="col-md-2">
+            <img
+                    [src]="user.picture"
+                    class="rounded-circle img-fluid profile-picture mb-3 mb-md-0 shadow-sm"
+                    alt="User Picture"
+            />
+        </div>
+        <div class="col-md">
+            <h2 class="text-primary">{{ user.name }}</h2>
+            <p class="lead text-secondary">{{ user.email }}</p>
+            <p class="text-muted small">Nickname: {{ user.nickname }}</p>
+        </div>
+    </div>
+</div>

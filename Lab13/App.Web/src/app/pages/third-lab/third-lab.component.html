@@ -1,0 +1,106 @@
+<div style="margin-bottom: 20px">
+    <h2>Варіант 23</h2>
+
+    <div>
+        <p>
+            Ані, як майбутній чемпіонці світу із програмування, доручили дуже
+            відповідальне завдання. Уряд вручає їй план будівництва доріг між N
+            містами. За планом всі дороги односторонні, але між двома містами може
+            бути більше однієї дороги, можливо, у різних напрямках. Ані необхідно
+            обчислити мінімальне таке K, що даний план є слабо K-зв'язковим.
+        </p>
+        <p>
+            Уряд називає план слабо K-зв'язковим, якщо виконано таку умову: для
+            будь-яких двох різних міст можна проїхати від одного до іншого, порушуючи
+            правила руху не більше K разів. Порушення правил - це проїзд існуючою
+            дорогою у зворотному напрямку. Гарантується, що між будь-якими двома
+            містами можна проїхати, можливо кілька разів порушивши правила.
+        </p>
+        <b>Вхідні дані:</b>
+        <p>
+            У першому рядку вхідного файлу INPUT.TXT записані два числа 2 ≤ N ≤ 300 та
+            1 ≤ M ≤ 10⁵ - кількість міст та доріг у плані. У наступних M рядках
+            наведено по два числа - номери міст, в яких починається і закінчується
+            відповідна дорога.
+        </p>
+        <b>Вихідні дані:</b>
+        <p>
+            У вихідний файл OUTPUT.TXT виведіть мінімальне K, таке, що даний у
+            вхідному файлі план є слабо K-зв'язковим.
+        </p>
+        <h3>Приклад</h3>
+        <table border="1" style="border-collapse: collapse; width: 100%; text-align: left;">
+            <thead>
+            <tr>
+                <th>№</th>
+                <th>INPUT.TXT</th>
+                <th>OUTPUT.TXT</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>1</td>
+                <td>
+                    3 2<br />
+                    1 2<br />
+                    1 3
+                </td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>
+                    4 4<br />
+                    2 4<br />
+                    1 3<br />
+                    4 1<br />
+                    3 2
+                </td>
+                <td>0</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <form
+            (ngSubmit)="onSubmit()"
+            style="
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 100%;
+      max-width: 500px;
+    "
+    >
+        <label for="inputText" style="font-weight: bold"
+        >Введіть вхідні дані:</label
+        >
+        <textarea
+                id="inputText"
+                [(ngModel)]="inputText"
+                name="inputText"
+                rows="6"
+                style="padding: 10px; font-family: Arial, sans-serif; resize: vertical"
+        ></textarea>
+        <button
+                type="submit"
+                style="padding: 10px; font-size: 16px; font-weight: bold; cursor: pointer"
+        >
+            Виконати
+        </button>
+    </form>
+
+    <div *ngIf="outputResult !== null" style="margin-top: 20px">
+        <h3 style="font-weight: bold">Результат:</h3>
+        <div
+                style="
+        width: 100%;
+        max-width: 500px;
+        padding: 10px;
+        font-family: Arial, sans-serif;
+      "
+        >
+            {{ outputResult }}
+        </div>
+    </div>
+</div>
