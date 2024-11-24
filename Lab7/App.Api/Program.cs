@@ -1,4 +1,5 @@
 using Data;
+using DotNetEnv;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Models;
@@ -6,7 +7,10 @@ using Models;
 var builder = WebApplication.CreateBuilder(args);
 
 
-var databaseProvider = builder.Configuration["DatabaseProvider"];
+Env.Load();
+
+//var databaseProvider = builder.Configuration["DatabaseProvider"] ?? "SQLite"; 
+var databaseProvider = Environment.GetEnvironmentVariable("DATABASE_PROVIDER");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     switch (databaseProvider)
@@ -44,12 +48,28 @@ builder.Services.AddAuthentication(options =>
     options.Audience = "lab6Api";
 });
 
+
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+// Apply migrations during startup
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+    
+    if (databaseProvider == "Sqlite")
+    {
+        dbContext.Database.EnsureCreated(); // Creates the database if it doesn't exist
+    }
+    else
+    {
+        dbContext.Database.Migrate(); // Applies migrations for other providers
+    }
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
